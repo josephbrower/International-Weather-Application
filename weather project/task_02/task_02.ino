@@ -116,6 +116,7 @@ void loop(){
   }
 }
 void updateWeather(String location){
+  //Get API request
   Serial.println("\nStarting connection to server...");
   // if you get a connection, report back via serial:
   if (client.connect(server, 80)) {
@@ -136,6 +137,8 @@ void updateWeather(String location){
     Serial.println("unable to connect");
   }
   String line = "";
+ 
+ //Processes API from openweathermap.org
   if (client.connected()) {
     line = client.readStringUntil('\n');
     Serial.println(line);
@@ -147,7 +150,8 @@ void updateWeather(String location){
     feelsLike = myObject["main"]["feels_like"];
     lon = myObject["coord"]["lon"];
     lat = myObject["coord"]["lat"];
-
+   
+    //Sound buzzer when you get a reading
     carrier.Buzzer.sound(300);
     delay(300);
     carrier.Buzzer.noSound();
@@ -156,7 +160,7 @@ void updateWeather(String location){
 }
 
 uint16_t RGBToUint16(uint8_t red, uint8_t green, uint8_t blue) {
-    // Convert 8-bit RGB components to 5-6-5 bits format
+    // Convert 8-bit RGB values (0–255) into a single 16-bit RGB565 color value
     uint16_t red5 = (red >> 3) & 0x1F;       // Extract 5 bits for red (31 max value)
     uint16_t green6 = (green >> 2) & 0x3F;   // Extract 6 bits for green (63 max value)
     uint16_t blue5 = (blue >> 3) & 0x1F;     // Extract 5 bits for blue (31 max value)
