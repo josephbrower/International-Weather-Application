@@ -4,10 +4,10 @@
 #include <Arduino_MKRIoTCarrier.h>
 MKRIoTCarrier carrier;
  
-char ssid[] = "home5292"; //  your network NAME between ""
-char pass[] = "BeansSleeps3";//  your network PASSWOR between ""
+char ssid[] = "#####"; //  your network NAME between ""
+char pass[] = "#####";//  your network PASSWOR between ""
  
-String apiKey = "d159ec749142225341bd2b07448ba4b8"; //paste weather map API KEY between ""
+String apiKey = "#####"; //paste weather map API KEY between ""
  
 //the cities you want the weather for
 String locations[9] = {"Kotzebue, US", "Anchorage, US", "Juneau, US", "Vancouver, CA",
